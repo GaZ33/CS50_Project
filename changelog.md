@@ -8,6 +8,6 @@ Creating files and directory to start my project
 - Files: app.py, DER.mwb, requirements.txt
 
 ## Day 09/06/2024
-Building frontend of index.html on figma
-- Creating header, main and courosel frames
-
+Building frontend of index.html on figma and starting the flask application
+- Creating header, main and courosel frames on figma
+- Coding the start of application
