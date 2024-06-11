@@ -11,3 +11,7 @@ Creating files and directory to start my project
 Building frontend of index.html on figma and starting the flask application
 - Creating header, main and courosel frames on figma
 - Coding the start of application
+
+## Day 10/06/2024
+- Creating the about, hover, methodologies and footer of desktop v1.0 and v1.1 on figma
+- Putting the bootstrap on layout.html
