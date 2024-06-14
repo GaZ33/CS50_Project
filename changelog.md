@@ -15,3 +15,7 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 10/06/2024
 - Creating the about, hover, methodologies and footer of desktop v1.0 and v1.1 on figma
 - Putting the bootstrap on layout.html
+
+## Day 13/06/2024
+- Sarting to code the header of layout html
+- Downloading icons and putting them on the upside tag
