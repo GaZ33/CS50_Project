@@ -13,3 +13,12 @@ header
 {
     margin-right: -0.5rem;
 }
+background
+{
+   background-image: url(./imgs/CS50_project_logo.png); 
+   /* background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+   /* background-position: center; Centraliza a imagem */
+   /* background-repeat: no-repeat; Impede a repetição da imagem */
+   /* width: 100%; */
+  /* height: 500px; Definindo altura e largura do elemento */ 
+}
