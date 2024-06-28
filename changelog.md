@@ -19,3 +19,9 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 13/06/2024
 - Sarting to code the header of layout html
 - Downloading icons and putting them on the upside tag
+
+## Day 26/06/2024
+- Build the main, section, footer and login page
+
+## Day 27/06/2024
+- Fixing the problem with imgs
