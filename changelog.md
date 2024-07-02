@@ -29,3 +29,6 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 29/06/2024
 - Editing the carousel
 - Editing the main content
+
+## Day 30/06/2024
+- Building the section and footer
