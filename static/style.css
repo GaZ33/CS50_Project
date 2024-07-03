@@ -9,7 +9,7 @@ header
     margin-left: -10rem;
     
 }
-.container
+.ajuste
 {
     margin-right: -0.5rem;
 }
@@ -35,6 +35,9 @@ background
 main{
     background-color: rgb(187, 251, 255);
 }
+.background{
+    background-color: rgb(187, 251, 255);
+}
 .fish
 {
     height: 100%;
@@ -43,4 +46,34 @@ main{
 section
 {
     background-color: rgb(202, 255, 207);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+footer
+{
+    background-color: black;
 }

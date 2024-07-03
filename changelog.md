@@ -32,3 +32,8 @@ Building frontend of index.html on figma and starting the flask application
 
 ## Day 30/06/2024
 - Building the section and footer
+
+## Day 01/07/2024
+- Tying to solve a problem on html document
+- Building the login page
+- Building the footer on login and index page
