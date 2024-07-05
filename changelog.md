@@ -37,3 +37,8 @@ Building frontend of index.html on figma and starting the flask application
 - Tying to solve a problem on html document
 - Building the login page
 - Building the footer on login and index page
+
+## Day 04/07/2024
+- Creating models for Database
+- Creating forms to recive data by html
+- Creating a register.html

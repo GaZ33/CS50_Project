@@ -16,39 +16,13 @@ Login
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
-    <p class="mt-2">If you do not have an account, please <a href="">register</a></p>
+    <p class="mt-2">If you do not have an account, please <a href="{{url_for('register')}}">register</a></p>
     <button class="btn mt-2 btn-primary w-100 py-2" type="submit">Sign in</button>
+    <p class="mt-2">If you area instructor, please <a href="">login here</a></p>
   </form>
 </main>
 </div>
-<footer>
-  <div class="container text-center">
 
-      <div class="row">
-        <div class="col">
-          <img src="../static/imgs/" alt="">
-          <h5>Schedules</h5>
-          <h6>Monday  XX:XX - YY:YY <br>
-            Tuesday  XX:XX - YY:YY<br>
-            Wednesday  XX:XX - YY:YY<br>
-            Thursday  XX:XX - YY:YY<br>
-            Friday   XX:XX - YY:YY<br>
-            Saturday  XX:XX - YY:YY
-            </h6>
-        </div>
-        <div class="col">
-          <img src="../static/imgs/" alt="">
-          <h5>Locations</h5>
-          <h6>xxxxxxx street, yyyyyy neighborhood <br>
-            xxxxxxxxx street, yyyyyyyy neighborhood</h6>
-        </div>
-        <div class="col">
-          <img src="../static/imgs/" alt="">
-          <h6>Lorem Ipsum is simply dummy text of the printing and</h6>
-        </div>
-      </div>
-    </div>
-</footer>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}
