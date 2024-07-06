@@ -42,3 +42,7 @@ Building frontend of index.html on figma and starting the flask application
 - Creating models for Database
 - Creating forms to recive data by html
 - Creating a register.html
+
+## Day 05/07/2024
+- Creating information model for database
+- Instantiating the login anf register form on routes

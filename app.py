@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from forms import LoginForm, RegisterForm
-
 app = Flask(__name__)
 
 
@@ -19,10 +18,16 @@ def index():
 
 @app.route("/login")
 def login():
+    LoginForm = LoginForm()
+    if LoginForm.validate_on_submit():
+        ...
     return render_template("login.html")
 
 @app.route("/register")
 def register():
+    RegisterForm = RegisterForm()
+    if RegisterForm.validate_on_submit():
+        ...
     return render_template("register.html")
 
 
