@@ -9,14 +9,19 @@ Login
     <h1 class="mt-4 h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      {{form.Username(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+      <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
+      {{form.Username.label(for="floatingInput")}}
+      <!-- <label for="floatingInput">Email address</label> -->
     </div>
     <div class="form-floating mt-4">
+      {{form.Password( class="form-control" id="floatingPassword" placeholder="*")}}
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      {{form.Password.label(for="floatingPassword")}}
       <label for="floatingPassword">Password</label>
     </div>
     <p class="mt-2">If you do not have an account, please <a href="{{url_for('register')}}">register</a></p>
+    {{form.Submit(class="btn mt-2 btn-primary w-100 py-2" )}}
     <button class="btn mt-2 btn-primary w-100 py-2" type="submit">Sign in</button>
     <p class="mt-2">If you area instructor, please <a href="">login here</a></p>
   </form>

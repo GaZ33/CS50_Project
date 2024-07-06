@@ -46,3 +46,10 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 05/07/2024
 - Creating information model for database
 - Instantiating the login anf register form on routes
+
+## Day 06/07/2024
+- Updating the files to create a circle of imports
+- Connecting the application to my database
+- Building the bcrypt on application
+- Updating the database's schema 
+- Updating the methods of my routes
