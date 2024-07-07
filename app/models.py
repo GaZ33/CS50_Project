@@ -15,7 +15,7 @@ class Information(db.model, UserMixin):
     FName = db.Column(db.String(length=20), nullable=False)
     MName = db.Column(db.String(length=40))
     LName = db.Column(db.String(length=30), nullable=False)
-    Email = db.Column(db.String(length=50), nullable=False)
+    Email = db.Column(db.String(length=50))
     City = db.Column(db.String(length=20))
     Street = db.Column(db.String(length=30))
     Neighborhood = db.Column(db.String(length=30))

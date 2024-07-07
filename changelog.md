@@ -51,5 +51,10 @@ Building frontend of index.html on figma and starting the flask application
 - Updating the files to create a circle of imports
 - Connecting the application to my database
 - Building the bcrypt on application
-- Updating the database's schema 
+- Updating the database's schema: Account and Information
 - Updating the methods of my routes
+
+## Day 07/07/2024
+- Changing the forms for more fields on register forms
+- Adjusting the login html and register html
+- Updating the database's schema: Employees and Performance
