@@ -15,15 +15,14 @@ Login
       <!-- <label for="floatingInput">Email address</label> -->
     </div>
     <div class="form-floating mt-4">
-      {{form.Password( class="form-control" id="floatingPassword" placeholder="*")}}
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      {{form.Password( class="form-control", id="floatingPassword", placeholder="*")}}
+      <!-- <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> -->
       {{form.Password.label(for="floatingPassword")}}
-      <label for="floatingPassword">Password</label>
+      <!-- <label for="floatingPassword">Password</label> -->
     </div>
     <p class="mt-2">If you do not have an account, please <a href="{{url_for('register')}}">register</a></p>
     {{form.Submit(class="btn mt-2 btn-primary w-100 py-2" )}}
-    <button class="btn mt-2 btn-primary w-100 py-2" type="submit">Sign in</button>
-    <p class="mt-2">If you area instructor, please <a href="">login here</a></p>
+    <p class="mt-2">If you are a instructor, please <a href="">login here</a></p>
   </form>
 </main>
 </div>

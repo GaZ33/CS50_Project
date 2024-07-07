@@ -1,5 +1,6 @@
 from app import render_template, redirect, url_for
 from app import app
+from app.forms import LoginForm, RegisterForm
 
 
 
@@ -13,11 +14,11 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    LoginForm = LoginForm()
+    loginform = LoginForm()
     # Quando o forms for enviado executará o if
-    if LoginForm.validate_on_submit():
-        ...
-    return render_template("login.html", form = LoginForm)
+    if loginform.validate_on_submit():
+        print('a')
+    return render_template("login.html", form = loginform)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -25,4 +26,4 @@ def register():
     # Quando o forms for enviado executará o if
     if RegisterForm.validate_on_submit():
         ...
-    return render_template("register.html")
+    return render_template("register.html", form = RegisterForm)

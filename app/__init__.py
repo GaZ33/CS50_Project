@@ -1,7 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from forms import LoginForm, RegisterForm
+from flask_bcrypt import Bcrypt
+from dotenv import load_dotenv
 import os
+
+# Carregando as variáveis do ambiente
+load_dotenv()
 
 # Criando a aplcação com o nome do arquivo
 app = Flask(__name__)
@@ -21,3 +25,4 @@ app.config["SECRET_KEY"] = secret_key
 db = SQLAlchemy(app)
 
 
+from app import routes
