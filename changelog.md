@@ -58,3 +58,9 @@ Building frontend of index.html on figma and starting the flask application
 - Changing the forms for more fields on register forms
 - Adjusting the login html and register html
 - Updating the database's schema: Employees and Performance
+
+## Day 08/07/2024
+- Creating password hash when the user register
+- Checking the password when the user log in
+- Creating Account and Information tables on MYSQL
+- Fixing some errors on model.py

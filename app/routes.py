@@ -1,5 +1,6 @@
 from app import render_template, redirect, url_for
-from app import app
+from app import app, login_user
+from app.models import Account, Information
 from app.forms import LoginForm, RegisterForm
 
 
@@ -17,7 +18,10 @@ def login():
     loginform = LoginForm()
     # Quando o forms for enviado executará o if
     if loginform.validate_on_submit():
-        print('a')
+        attempted_user = Account.query.filter_by(Username=loginform.Username.data)
+        if attempted_user and attempted_user.check_password(loginform.Password.data):
+            login_user(attempted_user)
+            print('a')
     return render_template("login.html", form = loginform)
 
 @app.route("/register", methods=["GET", "POST"])

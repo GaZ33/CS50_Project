@@ -2,7 +2,9 @@ from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
+from flask_login import login_manager, login_user
 import os
+import datetime
 
 # Carregando as variáveis do ambiente
 load_dotenv()
@@ -15,6 +17,7 @@ db_connection = os.getenv("DB_CONNECTION2")
 
 secret_key = os.getenv("SECRET_KEY")
 
+Bcrypt = Bcrypt(app)
 # Setting the path to databse on aplication
 app.config["SQLALCHEMY_DATABASE_URI"] = db_connection
 # Desativa o rastreamento de modificações para evitar avisos
