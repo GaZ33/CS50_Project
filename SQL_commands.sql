@@ -20,8 +20,9 @@ CREATE TABLE Information(
     Cellphone VARCHAR(16),
     Birthday DATETIME,
     Account_id INT,
-    CONSTRAINT FOREIGN KEY (Account_id) REFERENCES Account(id)
+    CONSTRAINT FOREIGN KEY (Account_id) REFERENCES Account(Id)
 );
 SHOW TABLES;
 DESC account;
 DESC information;
+DROP TABLE information;

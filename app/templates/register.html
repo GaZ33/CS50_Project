@@ -5,49 +5,50 @@ Register
 {%block main%}
 <div class="d-flex align-items-center py-4 background" >
     <main class="form-signin w-100 m-auto">
-      <form>
+      <form method="POST">
+        {{ form.hidden_tag() }}
         <h1 class="mt-4 h3 mb-3 fw-normal">Please sign in</h1>
     
         <div class="form-floating">
-          {{form.Username(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+          {{form.Username(class="form-control mt-4", placeholder="*")}}
           <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
           {{form.Username.label(for="floatingInput")}}
           <!-- <label for="floatingInput">Email address</label> -->
         </div>
         <div class="form-floating">
-          {{form.Email(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+          {{form.Email(class="form-control mt-4",placeholder="*")}}
           <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
-          {{form.Email.label(for="floatingInput")}}
+          {{form.Email.label()}}
           <!-- <label for="floatingInput">Email address</label> -->
         </div>
         <div class="form-floating">
-          {{form.FName(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+          {{form.FName(class="form-control mt-4", placeholder="*")}}
           <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
-          {{form.FName.label(for="floatingInput")}}
+          {{form.FName.label()}}
           <!-- <label for="floatingInput">Email address</label> -->
         </div>
         <div class="form-floating">
-          {{form.MName(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+          {{form.MName(class="form-control mt-4", placeholder="*")}}
           <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
-          {{form.MName.label(for="floatingInput")}}
+          {{form.MName.label()}}
           <!-- <label for="floatingInput">Email address</label> -->
         </div>
         <div class="form-floating">
-          {{form.LName(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+          {{form.LName(class="form-control mt-4", placeholder="*")}}
           <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
-          {{form.LName.label(for="floatingInput")}}
+          {{form.LName.label()}}
           <!-- <label for="floatingInput">Email address</label> -->
         </div>
         <div class="form-floating mt-4">
-          {{form.Password1( class="form-control" id="floatingPassword" placeholder="*")}}
+          {{form.Password1( class="form-control", placeholder="*")}}
           <!-- <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> -->
-          {{form.Password1.label(for="floatingPassword")}}
+          {{form.Password1.label()}}
           <!-- <label for="floatingPassword">Password</label> -->
         </div>
         <div class="form-floating mt-4">
-          {{form.Password2( class="form-control" id="floatingPassword" placeholder="*")}}
+          {{form.Password2( class="form-control",placeholder="*")}}
           <!-- <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> -->
-          {{form.Password2.label(for="floatingPassword")}}
+          {{form.Password2.label()}}
           <!-- <label for="floatingPassword">Password</label> -->
         </div>
         <p class="mt-2">If you already have an account, please <a href="{{url_for('login')}}">sig in</a></p>

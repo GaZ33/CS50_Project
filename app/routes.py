@@ -1,6 +1,6 @@
-from app import render_template, redirect, url_for
-from app import app, login_user
-from app.models import Account, Information
+from app import render_template, redirect, url_for, request
+from app import app, login_user, login_required
+from app.models import Account, Information, Employees
 from app.forms import LoginForm, RegisterForm
 
 
@@ -24,10 +24,28 @@ def login():
             print('a')
     return render_template("login.html", form = loginform)
 
-@app.route("/register", methods=["GET", "POST"])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
-    RegisterForm = RegisterForm()
+    registerform = RegisterForm()
     # Quando o forms for enviado executará o if
-    if RegisterForm.validate_on_submit():
-        ...
-    return render_template("register.html", form = RegisterForm)
+    if request.method == 'POST':
+        if registerform.validate_on_submit():
+            user_create = Account(Username=registerform.Username.data, Password=registerform.Password1.data)
+            
+            #user_information = Account()
+        # if registerform.errors != {}:
+        #     for err_msg in registerform.errors.values():
+        #         print(f"Houve um erro ao criar a conta: {err_msg[0]}")
+        #         print(type(err_msg))
+        
+    return render_template("register.html", form = registerform)
+
+def role_required(role):
+    def decorator(f):
+        @login_required
+        def decorated_function(*args, **kwargs):
+            if Employees.role != role:
+                return redirect(url_for('index'))
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator

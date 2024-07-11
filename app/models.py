@@ -20,6 +20,10 @@ class Account(db.Model, UserMixin):
     def check_password(self, attempted_password):
         return Bcrypt.check_password_hash(self.Password, attempted_password)
     
+    def get_id(self):
+        return int(self.Id)
+    informations = db.relationship('Information', backref='Account', lazy=True)
+    
 
 class Information(db.Model, UserMixin):
     Id = db.Column(db.Integer(), primary_key=True)
@@ -34,8 +38,8 @@ class Information(db.Model, UserMixin):
     Cellphone = db.column(db.String(length=16))
     Birthday = db.Column(db.DateTime())
     # Criando A relação de 1 para 1 no banco de dados
-    Account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
-    account = db.relationship('Account', backref=db.backref('information', uselist=False), lazy=True)
+    Account_id = db.Column(db.Integer, db.ForeignKey('account.Id'), nullable=False)
+    #account = db.relationship('Account', backref=db.backref('information', uselist=False), lazy=True)
 
 class Employees(db.Model, UserMixin):
     IdEmployees = db.Column(db.Integer(), primary_key=True)

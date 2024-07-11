@@ -64,3 +64,9 @@ Building frontend of index.html on figma and starting the flask application
 - Checking the password when the user log in
 - Creating Account and Information tables on MYSQL
 - Fixing some errors on model.py
+
+## Day 10/07/2024
+- Adding restrict account to access certain routes
+- Creating functionaries and scheduale pages
+- Fixing the problem with register route, models and forms
+- Editing my database, because I got the name column wrong
