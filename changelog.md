@@ -70,3 +70,9 @@ Building frontend of index.html on figma and starting the flask application
 - Creating functionaries and scheduale pages
 - Fixing the problem with register route, models and forms
 - Editing my database, because I got the name column wrong
+
+## Day 11/07/2024
+- Creating commit user on database
+- Doing comments for better reading
+- Improving to a better design
+- Creating flash messages

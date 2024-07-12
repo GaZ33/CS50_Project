@@ -20,7 +20,7 @@
               </a>
             <div class="d-flex upside flex-wrap align-items-center justify-content-center justify-content-lg-start">
               
-    
+              
               <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <li class="align-items-center ">
                   <a href="#" class="nav-link text-secondary">
@@ -56,6 +56,16 @@
 
     </downside>
   </header>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Se houver algum erro -->
+    {%if messages %}
+    <!-- Iterando os erros -->
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+  {% endwith %}
   {%block main%}
 
   {%endblock%}
