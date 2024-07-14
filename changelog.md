@@ -76,3 +76,8 @@ Building frontend of index.html on figma and starting the flask application
 - Doing comments for better reading
 - Improving to a better design
 - Creating flash messages
+
+## Day 14/07/2024
+- Updating models and creating user_loader function
+- Updating the Account and Employees table on MySQL
+- Now we can create user on our DB

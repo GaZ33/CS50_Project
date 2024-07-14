@@ -43,8 +43,7 @@ def register():
             user_create = Account(Username=registerform.Username.data,
                                   Password=registerform.Password1.data)
             # Verificando se não há usuários com o mesmo nome
-            query_check_user = db.Query.filter_by(Username=user_create.Username)
-
+            query_check_user = Account.query.filter_by(Username=user_create.Username).first()
             # TODO
             if query_check_user:
                 flash(message="Já existe um usuário com esse Username", category="warmimg")
@@ -54,12 +53,14 @@ def register():
                 db.session.add(user_create)
                 # Enviando as mudanças
                 db.session.commit()
-                query_information = db.Query.filter_by(Username=user_create.Username)
-                print(query_information)
+                query_information = Account.query.filter_by(Username=user_create.Username).first()
+                print(query_information.Id)
+                # TODO 
+                # LÓGICA PARA PEGAR O ID DO USUÁIRO CRIADO E RELACIONAR COM A INFORMAÇÃO
                 # Logando o usuário
-                login_user(user_create)
+                #login_user(user_create)
 
-                return redirect(url_for("scheduale"))
+                #return redirect(url_for("scheduale"))
 
 
 
