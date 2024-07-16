@@ -22,6 +22,15 @@
               
               
               <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                {% if not current_user.is_authenticated %}
+                <li class="ms-5">
+                  <a href="{{url_for('scheduale')}}" class="nav-link text-white">
+                    <img src="../static/imgs/Calender.png" alt="" width="50">
+                    <br>
+                    <p style="color: black;">Horários</p>
+                  </a>
+                </li>
+                {% endif %}
                 <li class="align-items-center ">
                   <a href="#" class="nav-link text-secondary">
                     <img src="../static/imgs/Location.png" alt="" width="50">
@@ -42,11 +51,22 @@
                     <img src="../static/imgs/Instagram.png" alt="" width="50">
                   </a>
                 </li>
+                {% if not current_user.is_authenticated %}
                 <li class="ms-5">
                   <a href="{{url_for('login')}}" class="nav-link text-white">
                     <img src="../static/imgs/Profile.png" alt="" width="50">
+          
                   </a>
                 </li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                <li class="ms-5">
+                  <a href="{{url_for('profile')}}" class="nav-link text-white">
+                    <img src="../static/imgs/Profile.png" alt="" width="50">
+                    {{ current_user.Username }}
+                  </a>
+                </li>
+                {% endif %}
               </ul>
             </div>
         </div>

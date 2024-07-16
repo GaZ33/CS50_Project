@@ -85,3 +85,8 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 15/07/2024
 - Creating login to Employees
 - Creating another table named Classes on models and DB
+- Creating new routes: Profile and Scheduale
+
+## Day 16/07/2024
+- Updating the header tag to change when the user is logged
+- Adding the information to DB when the user register

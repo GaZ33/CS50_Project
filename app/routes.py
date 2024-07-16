@@ -75,9 +75,15 @@ def register():
                 # TODO 
                 # LÓGICA PARA PEGAR O ID DO USUÁIRO CRIADO E RELACIONAR COM A INFORMAÇÃO
                 # Logando o usuário
-                #login_user(user_create)
+                information = Information(FName=registerform.FName.data, 
+                                          MName=registerform.MName.data,
+                                          LName=registerform.LName.data,
+                                          Account_id=query_information.Id)
+                db.session.add(information)
+                db.session.commit()
+                login_user(user_create)
 
-                #return redirect(url_for("scheduale"))
+                return redirect(url_for("scheduale"))
 
 
 
@@ -92,6 +98,15 @@ def register():
         #         print(type(err_msg))
         
     return render_template("register.html", form = registerform)
+
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
+
+@app.route("/scheduale")
+def scheduale():
+    return render_template("scheduale.html")
+
 
 # Função para restringir usuários de certas páginas
 def role_required(role):
