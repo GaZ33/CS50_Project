@@ -34,8 +34,28 @@ CREATE TABLE Employees(
     Cellphone VARCHAR(16),
     Birthday DATETIME
 );
+CREATE TABLE Performance(
+	Id INT PRIMARY KEY AUTO_INCREMENT,
+	Driving FLOAT NOT NULL,
+    Parking FLOAT NOT NULL,
+    Parallel_parking FLOAT NOT NULL,
+    Attention FLOAT NOT NULL,
+    Account_id INT NOT NULL,
+    Employees_id INT NOT NULL,
+    FOREIGN KEY (Account_id) REFERENCES Account(Id),
+    FOREIGN KEY (Employees_id) REFERENCES Employees(Id)
+);
+CREATE TABLE Classes(
+	Id INT PRIMARY KEY AUTO_INCREMENT,
+	Date DATETIME NOT NULL,
+    Account_id INT NOT NULL,
+    Employees_id INT NOT NULL,
+    FOREIGN KEY (Account_id) REFERENCES Account(Id),
+    FOREIGN KEY (Employees_id) REFERENCES Employees(Id)
+);
 SHOW TABLES;
 DESC account;
 DESC information;
 DROP TABLE Account;
 DROP TABLE Information;
+DROP TABLE Performance;

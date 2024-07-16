@@ -31,6 +31,23 @@ def login():
                 login_user(attempted_user)
     return render_template("login.html", form = loginform)
 
+# Login_employees.html
+@app.route("/login", methods=["GET", "POST"])
+def login_employees():
+    # Chamando a instância de formulário para a página
+    loginform = LoginForm()
+    # Executando a tentativa de login quando o forms for enviado
+    if request.method == "POST":
+        # Validando o formulário
+        if loginform.validate_on_submit():
+            # Buscando os resultados no database
+            attempted_user = Employees.query.filter_by(Username=loginform.Username.data)
+            # Verificando se houve uma instância e se a senha match
+            if attempted_user and attempted_user.check_password(loginform.Password.data):
+                # Fazendo o login do usuário
+                login_user(attempted_user)
+    return render_template("login.html", form = loginform)
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     # Chamando a instância de formulário para a página

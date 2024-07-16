@@ -81,3 +81,7 @@ Building frontend of index.html on figma and starting the flask application
 - Updating models and creating user_loader function
 - Updating the Account and Employees table on MySQL
 - Now we can create user on our DB
+
+## Day 15/07/2024
+- Creating login to Employees
+- Creating another table named Classes on models and DB

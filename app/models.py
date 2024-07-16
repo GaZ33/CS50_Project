@@ -22,7 +22,10 @@ class Account(db.Model, UserMixin):
     
     def get_id(self):
         return int(self.Id)
+    # Dizendo ao modelo sobre as relações
     informations = db.relationship('Information', backref='Account', lazy=True)
+    performance = db.relationship('Performance', backref='Performance', lazy=True)
+    classes = db.relationship('Classes', backref='Classes', lazy=True)
     
 
 class Information(db.Model, UserMixin):
@@ -64,6 +67,27 @@ class Employees(db.Model, UserMixin):
 
     def check_password(self, attempted_password):
         return Bcrypt.check_password_hash(self.Password, attempted_password)
+    performance = db.relationship('Performance', backref='Performance', lazy=True)
+    classes = db.relationship('Classes', backref='Classes', lazy=True)
+
+class Performance(db.Model, UserMixin):
+    Id = db.Column(db.Integer(), primary_key=True)
+    Driving = db.Column(db.Float(), nullable=False)
+    Parking = db.Column(db.Float(), nullable=False)
+    Parallel_parking = db.Column(db.Float(), nullable=False)
+    Attention = db.Column(db.Float(), nullable=False)
+    # Relações
+    Account_id = db.Column(db.Integer, db.ForeignKey('account.Id'), nullable=False)
+    Employees_id = db.Column(db.Integer, db.ForeignKey('employees.Id'), nullable=False)
+
+class Classes(db.Model, UserMixin):
+    Id = db.Column(db.Integer(), primary_key=True)
+    Date = db.Column(db.DateTime())
+    Account_id = db.Column(db.Integer, db.ForeignKey('account.Id'), nullable=False)
+    Employees_id = db.Column(db.Integer, db.ForeignKey('employees.Id'), nullable=False)
+    # Relações
+    Account_id = db.Column(db.Integer, db.ForeignKey('account.Id'), nullable=False)
+    Employees_id = db.Column(db.Integer, db.ForeignKey('employees.Id'), nullable=False)
 
 @login_manager.user_loader
 def load_user(user):
