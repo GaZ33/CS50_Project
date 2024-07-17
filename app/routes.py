@@ -1,4 +1,4 @@
-from app import render_template, redirect, url_for, request
+from app import render_template, redirect, url_for, request, session
 from app import app, login_user, login_required, flash
 from app.models import Account, Information, Employees, db
 from app.forms import LoginForm, RegisterForm
@@ -15,25 +15,30 @@ def index():
     return render_template("index.html")
 
 # Login.html
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
+    print("ccddddcc")
     # Chamando a instância de formulário para a página
     loginform = LoginForm()
     # Executando a tentativa de login quando o forms for enviado
     if request.method == "POST":
         # Validando o formulário
         if loginform.validate_on_submit():
+            print("bbbbbbbbbb")
             # Buscando os resultados no database
-            attempted_user = Account.query.filter_by(Username=loginform.Username.data)
+            attempted_user = Account.query.filter_by(Username=loginform.Username.data).first()
             # Verificando se houve uma instância e se a senha match
             if attempted_user and attempted_user.check_password(loginform.Password.data):
                 # Fazendo o login do usuário
+                print("aaaaaaaaaaa")
                 login_user(attempted_user)
+                session['user_type'] = 'account'
     return render_template("login.html", form = loginform)
 
 # Login_employees.html
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/loginemployees", methods=["GET", "POST"])
 def login_employees():
+    print("aaaaaaaaaaa")
     # Chamando a instância de formulário para a página
     loginform = LoginForm()
     # Executando a tentativa de login quando o forms for enviado
@@ -46,6 +51,8 @@ def login_employees():
             if attempted_user and attempted_user.check_password(loginform.Password.data):
                 # Fazendo o login do usuário
                 login_user(attempted_user)
+                session['user_type'] = 'account'
+                
     return render_template("login.html", form = loginform)
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -71,17 +78,16 @@ def register():
                 # Enviando as mudanças
                 db.session.commit()
                 query_information = Account.query.filter_by(Username=user_create.Username).first()
-                print(query_information.Id)
-                # TODO 
-                # LÓGICA PARA PEGAR O ID DO USUÁIRO CRIADO E RELACIONAR COM A INFORMAÇÃO
-                # Logando o usuário
                 information = Information(FName=registerform.FName.data, 
                                           MName=registerform.MName.data,
                                           LName=registerform.LName.data,
+                                          Category=registerform.Category.data,
+                                          Email=registerform.Email.data,
                                           Account_id=query_information.Id)
                 db.session.add(information)
                 db.session.commit()
                 login_user(user_create)
+                session['user_type'] = 'account'
 
                 return redirect(url_for("scheduale"))
 
@@ -100,6 +106,7 @@ def register():
     return render_template("register.html", form = registerform)
 
 @app.route("/profile")
+@login_required
 def profile():
     return render_template("profile.html")
 

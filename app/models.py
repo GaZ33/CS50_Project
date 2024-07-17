@@ -1,4 +1,4 @@
-from app import db, login_manager
+from app import db, login_manager, session
 from flask_login import UserMixin
 from app import Bcrypt
 
@@ -8,12 +8,12 @@ Criando as tabelas do nosso banco de dados
 class Account(db.Model, UserMixin):
     Id = db.Column(db.Integer(), primary_key=True)
     Username = db.Column(db.String(length=25), nullable=False, unique=True)
-    Password = db.Column(db.String(length=80), nullable=False)
+    password_hash = db.Column(db.String(length=150), nullable=False)
     @property
-    def password(self):
+    def Password(self):
         return self.Password
     
-    @password.setter
+    @Password.setter
     def password_hash(self, Password):
         self.Password = Bcrypt.generate_password_hash(Password).decode('utf-8')
 
@@ -24,8 +24,8 @@ class Account(db.Model, UserMixin):
         return int(self.Id)
     # Dizendo ao modelo sobre as relações
     informations = db.relationship('Information', backref='Account', lazy=True)
-    performance = db.relationship('Performance', backref='Performance', lazy=True)
-    classes = db.relationship('Classes', backref='Classes', lazy=True)
+    performance = db.relationship('Performance', backref='Account', lazy=True)
+    classes = db.relationship('Classes', backref='Account', lazy=True)
     
 
 class Information(db.Model, UserMixin):
@@ -67,8 +67,8 @@ class Employees(db.Model, UserMixin):
 
     def check_password(self, attempted_password):
         return Bcrypt.check_password_hash(self.Password, attempted_password)
-    performance = db.relationship('Performance', backref='Performance', lazy=True)
-    classes = db.relationship('Classes', backref='Classes', lazy=True)
+    performance = db.relationship('Performance', backref='Employees', lazy=True)
+    classes = db.relationship('Classes', backref='Employees', lazy=True)
 
 class Performance(db.Model, UserMixin):
     Id = db.Column(db.Integer(), primary_key=True)
@@ -91,11 +91,9 @@ class Classes(db.Model, UserMixin):
 
 @login_manager.user_loader
 def load_user(user):
-    user_type, id = user.split(":")
-
-    if user_type == "account":
-        return Account.query.get(id)
-    elif user_type == "employee":
-        return Employees.query.get(id)
-    else:
-        return None
+    user_type = session.get('user_type')
+    if user_type == 'account':
+        return Account.query.get(user)
+    elif user_type == 'employee':
+        return Employees.query.get(user)
+    return None

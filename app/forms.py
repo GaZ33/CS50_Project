@@ -14,10 +14,11 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     Username = StringField(label="Username*", validators=[Length(min=5, max=15), DataRequired()])
-    Email = EmailField(label="Email*", validators=[Email(),Length(max=50), DataRequired()])
+    Email = EmailField(label="Email*", validators=[Email(),Length(max=50)])
     FName = StringField(label="First name*", validators=[Length(max=20), DataRequired()])
-    MName = StringField(label="Midle name", validators=[Length(max=20), DataRequired()])
+    MName = StringField(label="Midle name", validators=[Length(max=20)])
     LName = StringField(label="Last name*", validators=[Length(max=20), DataRequired()])
+    Category = StringField(label="Category*", validators=[Length(max=3), DataRequired()])
     Password1 = PasswordField(label="Passowrd*", validators=[Length(min=6), DataRequired()])
     Password2 = PasswordField(label="Confirm password*", validators=[EqualTo("Password1"), DataRequired()])
     Submit = SubmitField(label="Submit")

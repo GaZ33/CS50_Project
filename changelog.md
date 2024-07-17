@@ -90,3 +90,5 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 16/07/2024
 - Updating the header tag to change when the user is logged
 - Adding the information to DB when the user register
+- Updating the model, forms and route to recive category from the user
+- Updating the login.html
