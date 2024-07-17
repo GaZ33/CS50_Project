@@ -8,14 +8,15 @@ Criando as tabelas do nosso banco de dados
 class Account(db.Model, UserMixin):
     Id = db.Column(db.Integer(), primary_key=True)
     Username = db.Column(db.String(length=25), nullable=False, unique=True)
-    password_hash = db.Column(db.String(length=150), nullable=False)
+    Password = db.Column(db.String(length=150), nullable=False)
+
     @property
-    def Password(self):
-        return self.Password
+    def Password_text(self):
+        return self.Password_text
     
-    @Password.setter
-    def password_hash(self, Password):
-        self.Password = Bcrypt.generate_password_hash(Password).decode('utf-8')
+    @Password_text.setter
+    def Password_text(self, attempet_password):
+        self.Password = Bcrypt.generate_password_hash(attempet_password).decode('utf-8')
 
     def check_password(self, attempted_password):
         return Bcrypt.check_password_hash(self.Password, attempted_password)

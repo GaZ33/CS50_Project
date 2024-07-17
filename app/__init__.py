@@ -26,7 +26,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = secret_key
 
 login_manager = LoginManager(app)
-login_manager.login_view = "home_page"
+login_manager.login_view = "login"
 
 login_manager.login_message_category = "info"
 login_manager.login_message= "Entre ou crie em uma conta para acessar essa página!"

@@ -92,3 +92,7 @@ Building frontend of index.html on figma and starting the flask application
 - Adding the information to DB when the user register
 - Updating the model, forms and route to recive category from the user
 - Updating the login.html
+
+## Day 17/07/2024
+- Updating the route and models to encrypt the user's password
+

@@ -17,20 +17,19 @@ def index():
 # Login.html
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    print("ccddddcc")
     # Chamando a instância de formulário para a página
     loginform = LoginForm()
     # Executando a tentativa de login quando o forms for enviado
     if request.method == "POST":
         # Validando o formulário
         if loginform.validate_on_submit():
-            print("bbbbbbbbbb")
+            
             # Buscando os resultados no database
             attempted_user = Account.query.filter_by(Username=loginform.Username.data).first()
             # Verificando se houve uma instância e se a senha match
             if attempted_user and attempted_user.check_password(loginform.Password.data):
                 # Fazendo o login do usuário
-                print("aaaaaaaaaaa")
+                
                 login_user(attempted_user)
                 session['user_type'] = 'account'
     return render_template("login.html", form = loginform)
@@ -38,7 +37,7 @@ def login():
 # Login_employees.html
 @app.route("/loginemployees", methods=["GET", "POST"])
 def login_employees():
-    print("aaaaaaaaaaa")
+    
     # Chamando a instância de formulário para a página
     loginform = LoginForm()
     # Executando a tentativa de login quando o forms for enviado
@@ -52,6 +51,7 @@ def login_employees():
                 # Fazendo o login do usuário
                 login_user(attempted_user)
                 session['user_type'] = 'account'
+                return redirect(url_for("scheduale"))
                 
     return render_template("login.html", form = loginform)
 
@@ -65,7 +65,7 @@ def register():
         if registerform.validate_on_submit():
             # Criando uma instância de usuário
             user_create = Account(Username=registerform.Username.data,
-                                  Password=registerform.Password1.data)
+                                  Password_text=registerform.Password1.data)
             # Verificando se não há usuários com o mesmo nome
             query_check_user = Account.query.filter_by(Username=user_create.Username).first()
             # TODO
@@ -111,8 +111,11 @@ def profile():
     return render_template("profile.html")
 
 @app.route("/scheduale")
+@login_required
 def scheduale():
     return render_template("scheduale.html")
+
+
 
 
 # Função para restringir usuários de certas páginas
