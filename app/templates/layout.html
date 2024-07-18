@@ -11,64 +11,70 @@
 </head>
 
 <body>
-    <header>
-      <upside>
-        <div class="px-3 py-2 border-bottom">
-          <div class="container d-flex ajuste">
-            <a href="/" class="d-flex logo align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                <img src="../static/imgs/CS50_project_logo.png" alt="Logo" width="200">
-              </a>
-            <div class="d-flex upside flex-wrap align-items-center justify-content-center justify-content-lg-start">
-              
-              
-              <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                {% if current_user.is_authenticated %}
-                <li class="ms-5">
-                  <a href="{{url_for('scheduale')}}" class="nav-link text-white">
-                    <img src="../static/imgs/Calender.png" alt="" width="50">
-                    <br>
-                    <p style="color: black;">Horários</p>
-                  </a>
-                </li>
-                {% endif %}
-                <li class="align-items-center ">
-                  <a href="#" class="nav-link text-secondary">
-                    <img src="../static/imgs/Location.png" alt="" width="50">
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link text-white">
-                    <img src="../static/imgs/Phone.png" alt="" width="50">
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="nav-link text-white">
-                    <img src="../static/imgs/Whatsapp.png" alt="" width="50">
-                  </a>
-                </li>
-                <li >
-                  <a href="#" class="nav-link text-white">
-                    <img src="../static/imgs/Instagram.png" alt="" width="50">
-                  </a>
-                </li>
-                {% if not current_user.is_authenticated %}
-                <li class="ms-5">
-                  <a href="{{url_for('login')}}" class="nav-link text-white">
-                    <img src="../static/imgs/Profile.png" alt="" width="50">
-          
-                  </a>
-                </li>
-                {% endif %}
-                {% if current_user.is_authenticated %}
-                <li class="ms-5">
-                  <a href="{{url_for('profile')}}" class="nav-link text-white">
-                    <img src="../static/imgs/Profile.png" alt="" width="50">
-                    {{ current_user.Username }}
-                  </a>
-                </li>
-                {% endif %}
-              </ul>
-            </div>
+  <header>
+    <upside>
+      <div class="px-3 py-2 border-bottom">
+        <div class="container d-flex ajuste">
+          <a href="/" class="d-flex logo align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <img src="../static/imgs/CS50_project_logo.png" alt="Logo" width="200">
+          </a>
+          <div class="d-flex upside flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              {% if current_user.is_authenticated %}
+              <li class="ms-5">
+                <a href="{{url_for('scheduale')}}" class="nav-link text-white justify-content-center">
+                  <img src="../static/imgs/Calender.png" alt="" width="50">
+                  <br>
+                  <p style="color: black;">Horários</p>
+                </a>
+              </li>
+              {% endif %}
+              <li class="align-items-center ">
+                <a href="#" class="nav-link text-secondary">
+                  <img src="../static/imgs/Location.png" alt="" width="50">
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <img src="../static/imgs/Phone.png" alt="" width="50">
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <img src="../static/imgs/Whatsapp.png" alt="" width="50">
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <img src="../static/imgs/Instagram.png" alt="" width="50">
+                </a>
+              </li>
+              {% if not current_user.is_authenticated %}
+              <li class="ms-5">
+                <a href="{{url_for('login')}}" class="nav-link text-white">
+                  <img src="../static/imgs/Profile.png" alt="" width="50">
+
+                </a>
+              </li>
+              {% endif %}
+              {% if current_user.is_authenticated %}
+              <li class="ms-5">
+                <a href="{{url_for('profile')}}"  class="nav-link text-white">
+                  <img src="../static/imgs/Profile.png" alt="" width="50">
+                  <h6 style="color: black;" >{{ current_user.Username }}</h6>
+                </a>
+              </li>
+              <li class=""">
+                <a href="{{url_for('profile')}}"  class="nav-link text-white">
+                  <img src="../static/imgs/logout.png" alt="" width="50">
+                  <h6 style="color: black;" >Logout</h6>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
         </div>
       </div>
     </upside>
@@ -78,12 +84,12 @@
   </header>
   {% with messages = get_flashed_messages(with_categories=true) %}
   <!-- Se houver algum erro -->
-    {%if messages %}
-    <!-- Iterando os erros -->
-      {% for message in messages %}
-        <p>{{ message }}</p>
-      {% endfor %}
-    {% endif %}
+  {%if messages %}
+  <!-- Iterando os erros -->
+  {% for message in messages %}
+  <p>{{ message }}</p>
+  {% endfor %}
+  {% endif %}
 
   {% endwith %}
   {%block main%}
@@ -91,31 +97,56 @@
   {%endblock%}
   <footer>
     <div class="container text-center">
-  
-        <div class="row">
-          <div class="col">
-            <img src="../static/imgs/" alt="">
-            <h5>Schedules</h5>
-            <h6>Monday  XX:XX - YY:YY <br>
-              Tuesday  XX:XX - YY:YY<br>
-              Wednesday  XX:XX - YY:YY<br>
-              Thursday  XX:XX - YY:YY<br>
-              Friday   XX:XX - YY:YY<br>
-              Saturday  XX:XX - YY:YY
-              </h6>
-          </div>
-          <div class="col">
-            <img src="../static/imgs/" alt="">
-            <h5>Locations</h5>
-            <h6>xxxxxxx street, yyyyyy neighborhood <br>
-              xxxxxxxxx street, yyyyyyyy neighborhood</h6>
-          </div>
-          <div class="col">
-            <img src="../static/imgs/" alt="">
-            <h6>Lorem Ipsum is simply dummy text of the printing and</h6>
-          </div>
+
+      <div class="row">
+        <div class="col">
+          <img src="../static/imgs/" alt="">
+          <h5>Schedules</h5>
+          <h6>Monday XX:XX - YY:YY <br>
+            Tuesday XX:XX - YY:YY<br>
+            Wednesday XX:XX - YY:YY<br>
+            Thursday XX:XX - YY:YY<br>
+            Friday XX:XX - YY:YY<br>
+            Saturday XX:XX - YY:YY
+          </h6>
+        </div>
+        <div class="col">
+          <img src="../static/imgs/" alt="">
+          <h5>Locations</h5>
+          <h6>xxxxxxx street, yyyyyy neighborhood <br>
+            xxxxxxxxx street, yyyyyyyy neighborhood</h6>
+
+          <img src="../static/imgs/CS50_project_logo02.png" width="200" alt="">
+        </div>
+        <div class="col">
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+
+            <li class="ms-1">
+              <a href="#" class="nav-link text-white">
+                <img src="../static/imgs/Phone.png" alt="" width="50">
+              </a>
+            </li>
+            <li class="ms-1">
+              <a href="#" class="nav-link text-white">
+                <img src="../static/imgs/Whatsapp.png" alt="" width="50">
+
+              </a>
+            </li>
+            <li class="ms-1">
+              <a href="#" class="nav-link text-white">
+                <img src="../static/imgs/Instagram.png" alt="" width="50">
+              </a>
+            </li>
+          </ul>
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1522.7385461939798!2d-47.62402975250124!3d-22.717743762604872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c631c6f62cf71f%3A0x84d78cee93ef2dcc!2sMonumento%20%22Peixe%20Para%22!5e0!3m2!1spt-BR!2sbr!4v1721259788318!5m2!1spt-BR!2sbr"
+            width="300" height="150"  style="border:0;" class="justify-content-center" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </ul>
         </div>
       </div>
+    </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
