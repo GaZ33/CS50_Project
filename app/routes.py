@@ -1,5 +1,5 @@
 from app import render_template, redirect, url_for, request, session
-from app import app, login_user, login_required, flash
+from app import app, login_user, login_required, flash, logout_user, current_user
 from app.models import Account, Information, Employees, db
 from app.forms import LoginForm, RegisterForm
 
@@ -108,14 +108,32 @@ def register():
 @app.route("/profile")
 @login_required
 def profile():
-    return render_template("profile.html")
+    form = RegisterForm()
+
+    query_account = Account.query.filter_by(Username=current_user.Username).first()
+    query_information = Information.query.filter_by(Account_id=query_account.Id).first()
+    print(query_account.Id)
+    #info = Profileform(obj=information)
+    if request.method == "POST":
+        if RegisterForm.validate_on_submit:
+            #query_information.FName = info.FName.data
+            ...
+    
+
+    return render_template("profile.html", 
+                        query_account=query_account,
+                        query_information=query_information, 
+                        form=form)
 
 @app.route("/scheduale")
 @login_required
 def scheduale():
     return render_template("scheduale.html")
 
-
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
 
 
 # Função para restringir usuários de certas páginas

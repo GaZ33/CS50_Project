@@ -97,3 +97,7 @@ Building frontend of index.html on figma and starting the flask application
 - Updating the route and models to encrypt the user's password
 - Downloading new pictures
 - Updating the layout.html and index.html: footer, header, google maps and section tags
+
+## Day 18/07/2024
+- Creating logout route
+- Starting the profile page - *problems*

@@ -8,35 +8,20 @@ Profile
     {{ form.hidden_tag() }}
     <div class="row">
         <div class="col">
-            {{ form.Fname.label(class="mb-2")}}
-            {{form.Fname(class="form-control mb-3", placeholder="*") }}
+            {{ form.FName.label(class="mb-2")}}
+            {{form.FName(class="form-control mb-3", placeholder="*") }}
         </div>
         <div class="col">
-            {{ form.Mname.label(class="mb-2")}}
-            {{form.Mname(class="form-control mb-3", placeholder=" ") }}
+            {{ form.MName.label(class="mb-2")}}
+            {{form.MName(class="form-control mb-3", placeholder=" ") }}
         </div>
         <div class="col">
-            {{ form.Lname.label(class="mb-2")}}
-            {{form.Lname(class="form-control mb-3", placeholder="*") }}
+            {{ form.LName.label(class="mb-2")}}
+            {{form.LName(class="form-control mb-3", placeholder="*") }}
         </div>
       </div>
-    <div class="row">
-        <div class="col">
-            {{ form.login.label(class="mb-2")}}
-            {{form.login(class="form-control mb-3", placeholder="*") }}
-        </div>
-        <div class="col">
-            {{ form.email_address.label(class="mb-2")}}
-            {{form.email_address(class="form-control mb-3", placeholder="*") }}
-        </div>
-    </div>
-    {{form.password1.label(class="mb-2")}}
-    {{form.password1(class="form-control mb-3", placeholder="*") }}
-
-    {{form.password2.label(class="mb-2")}}
-    {{form.password2(class="form-control mb-3", placeholder="*") }}
     
-    {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+    {{ form.Submit(class="btn btn-lg btn-block btn-primary") }}
       
 </form>
 {%endblock%}
