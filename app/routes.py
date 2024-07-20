@@ -105,7 +105,7 @@ def register():
         
     return render_template("register.html", form = registerform)
 
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile():
     query_account = Account.query.filter_by(Username=current_user.Username).first()
@@ -120,13 +120,19 @@ def profile():
                        Category=query_information.Category,
                        Cellphone=query_information.Cellphone,
                        Birthday=query_information.Birthday)
-    
-    print(query_account.Id)
-    #info = Profileform(obj=information)
     if request.method == "POST":
-        if RegisterForm.validate_on_submit:
-            #query_information.FName = info.FName.data
-            ...
+        if profileform.validate_on_submit:
+            query_information.Email = profileform.Email.data
+            query_information.FName = profileform.FName.data
+            query_information.MName = profileform.MName.data
+            query_information.City = profileform.City.data
+            query_information.Street = profileform.Street.data
+            query_information.Neighborhood = profileform.Neighborhood.data
+            query_information.Category = profileform.Category.data
+            query_information.Cellphone = profileform.Cellphone.data
+            query_information.Birthday = profileform.Birthday.data
+            db.session.commit()
+            return redirect("scheduale")
     
 
     return render_template("profile.html", form=profileform)

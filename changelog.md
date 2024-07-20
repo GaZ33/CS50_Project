@@ -105,10 +105,9 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 20/07/2024
 - Setting profile page to recive the information that the user already have and transform that into a form
 - Now you can update your information from Profile page
-
+- Design of Profile Page
 
 # WHAT I NEED TO DO?
-Design of Profile Page
 scheduale page
 login employees
 Setting flash message
