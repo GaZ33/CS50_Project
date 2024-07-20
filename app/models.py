@@ -59,15 +59,19 @@ class Employees(db.Model, UserMixin):
         return int(self.Id)
     
     @property
-    def Password(self):
-        return self.Password
+    def Password_text(self):
+        return self.Password_text
     
-    @Password.setter
-    def password_hash(self, password):
-        self.password = Bcrypt.generate_password_hash(password).decode('utf-8')
+    @Password_text.setter
+    def Password_text(self, attempet_password):
+        self.Password = Bcrypt.generate_password_hash(attempet_password).decode('utf-8')
 
     def check_password(self, attempted_password):
         return Bcrypt.check_password_hash(self.Password, attempted_password)
+    
+    def get_id(self):
+        return int(self.Id)
+
     performance = db.relationship('Performance', backref='Employees', lazy=True)
     classes = db.relationship('Classes', backref='Employees', lazy=True)
 

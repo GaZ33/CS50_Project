@@ -106,8 +106,11 @@ Building frontend of index.html on figma and starting the flask application
 - Setting profile page to recive the information that the user already have and transform that into a form
 - Now you can update your information from Profile page
 - Design of Profile Page
+- Doing the employee login to work
+- Creating the employee scheduale page
 
 # WHAT I NEED TO DO?
 scheduale page
+scheduale employee page
 login employees
 Setting flash message

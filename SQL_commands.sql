@@ -2,9 +2,15 @@ show databases;
 CREATE DATABASE IF NOT EXISTS gzauto;
 USE gzauto;
 
+SELECT * FROM Account;
+
+
+DELETE FROM Account WHERE Id > 0;
+DELETE FROM Information WHERE Account_id > 0;
+
 CREATE TABLE Account(
 	Id INT PRIMARY KEY AUTO_INCREMENT,
-    Username VARCHAR(25) NOT NULL,
+    Username VARCHAR(25) NOT NULL UNIQUE,
     Password VARCHAR(80) NOT NULL
 );
 CREATE TABLE Information(
@@ -22,9 +28,10 @@ CREATE TABLE Information(
     Account_id INT,
     CONSTRAINT FOREIGN KEY (Account_id) REFERENCES Account(Id)
 );
+
 CREATE TABLE Employees(
 	Id INT PRIMARY KEY AUTO_INCREMENT,
-	Username VARCHAR(25) NOT NULL,
+	Username VARCHAR(25) NOT NULL UNIQUE,
     Password VARCHAR(80) NOT NULL,
     Role VARCHAR(15) NOT NULL,
     FName VARCHAR(20) NOT NULL,
