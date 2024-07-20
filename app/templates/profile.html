@@ -4,24 +4,61 @@ Profile
 {%endblock%}
 
 {%block main%}
-<form class="form-register container" style="color:white" method="POST">
-    {{ form.hidden_tag() }}
-    <div class="row">
-        <div class="col">
-            {{ form.FName.label(class="mb-2")}}
-            {{form.FName(class="form-control mb-3", placeholder="*") }}
+
+<div class="pt-3" style="background-color:rgb(187, 251, 255)">
+    <h2 class="centralizando">Profile Information</h2>
+    <form class="form-register container " style="color: black" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col">
+                {{ form.FName.label(class="mb-2")}}
+                {{form.FName(class="form-control mb-3", placeholder="*") }}
+            </div>
+            <div class="col">
+                {{ form.MName.label(class="mb-2")}}
+                {{form.MName(class="form-control mb-3", placeholder=" ") }}
+            </div>
+            <div class="col">
+                {{ form.LName.label(class="mb-2")}}
+                {{form.LName(class="form-control mb-3", placeholder="*") }}
+            </div>
         </div>
-        <div class="col">
-            {{ form.MName.label(class="mb-2")}}
-            {{form.MName(class="form-control mb-3", placeholder=" ") }}
+        <div class="row">
+            <div class="col">
+                {{ form.City.label(class="mb-2")}}
+                {{form.City(class="form-control mb-3", placeholder="") }}
+            </div>
+            <div class="col">
+                {{ form.Neighborhood.label(class="mb-2")}}
+                {{form.Neighborhood(class="form-control mb-3", placeholder="") }}
+            </div>
+            
+            <div class="col">
+                {{ form.Street.label(class="mb-2")}}
+                {{form.Street(class="form-control mb-3", placeholder="") }}
+            </div>
         </div>
-        <div class="col">
-            {{ form.LName.label(class="mb-2")}}
-            {{form.LName(class="form-control mb-3", placeholder="*") }}
+        <div class="row">
+            <div class="col">
+                {{ form.Category.label(class="mb-2")}}
+                {{form.Category(class="form-control mb-3", placeholder="*") }}
+            </div>
+            <div class="col">
+                {{ form.Cellphone.label(class="mb-2")}}
+                {{form.Cellphone(class="form-control mb-3", placeholder=" ") }}
+            </div>
+            <div class="col">
+                {{ form.Birthday.label(class="mb-2")}}
+                {{form.Birthday(class="form-control mb-3", placeholder="*") }}
+            </div>
+
         </div>
-      </div>
-    
-    {{ form.Submit(class="btn btn-lg btn-block btn-primary") }}
-      
-</form>
+        <div class="row">
+            <div class="col centralizando">
+                {{ form.Submit(class="btn btn-lg btn-block btn-primary mr-5") }}
+                <a class="m-3" href="urlf_for('scheduale')"><button class="btn btn-lg btn-block btn-primary"">Scheduale</button></a>
+            </div>
+        </div>
+    </form>
+</div> 
 {%endblock%}

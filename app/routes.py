@@ -1,7 +1,7 @@
 from app import render_template, redirect, url_for, request, session
 from app import app, login_user, login_required, flash, logout_user, current_user
 from app.models import Account, Information, Employees, db
-from app.forms import LoginForm, RegisterForm
+from app.forms import LoginForm, RegisterForm, ProfileForm
 
 
 """ 
@@ -108,10 +108,19 @@ def register():
 @app.route("/profile")
 @login_required
 def profile():
-    form = RegisterForm()
-
     query_account = Account.query.filter_by(Username=current_user.Username).first()
     query_information = Information.query.filter_by(Account_id=query_account.Id).first()
+    profileform = ProfileForm(Email=query_information.Email,
+                       FName=query_information.FName,
+                       MName=query_information.MName,
+                       LName=query_information.LName,
+                       City=query_information.City,
+                       Street=query_information.Street,
+                       Neighborhood=query_information.Neighborhood,
+                       Category=query_information.Category,
+                       Cellphone=query_information.Cellphone,
+                       Birthday=query_information.Birthday)
+    
     print(query_account.Id)
     #info = Profileform(obj=information)
     if request.method == "POST":
@@ -120,10 +129,7 @@ def profile():
             ...
     
 
-    return render_template("profile.html", 
-                        query_account=query_account,
-                        query_information=query_information, 
-                        form=form)
+    return render_template("profile.html", form=profileform)
 
 @app.route("/scheduale")
 @login_required
