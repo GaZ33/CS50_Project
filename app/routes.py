@@ -1,7 +1,7 @@
-from app import render_template, redirect, url_for, request, session
+from app import render_template, redirect, url_for, request, session, datetime, timedelta, and_
 from app import app, login_user, login_required, flash, logout_user, current_user
-from app.models import Account, Information, Employees, db
-from app.forms import LoginForm, RegisterForm, ProfileForm
+from app.models import Account, Information, Employees, db, Classes, Performance
+from app.forms import LoginForm, RegisterForm, ProfileForm, ChoiceInstructor
 
 
 
@@ -141,10 +141,26 @@ def profile():
             return redirect("scheduale")
     return render_template("profile.html", form=profileform)
 
-@app.route("/scheduale")
+@app.route("/scheduale", methods=["GET", "POST"])
 @login_required
 def scheduale():
-    return render_template("scheduale.html")
+    choice = ChoiceInstructor()
+    query_instructor = Employees.query.filter_by(Role="Instructor")
+    choice.Instructor.choices = [(instructor.Id, instructor.FName) for instructor in query_instructor]
+
+    if request.method == "POST":
+        if choice.validate_on_submit:
+            today = datetime.today()
+            # jé vem o ID ao invés do nome
+            employee_choosed = choice.Instructor.data
+            employee_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_choosed, Classes.Date==today)).all()
+            print(employee_scheduale)
+            #Select(Employees_id==employee_choosed, ) .all()
+
+            ...
+
+    
+    return render_template("scheduale.html", form=choice)
 
 @app.route("/logout")
 def logout():

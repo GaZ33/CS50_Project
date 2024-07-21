@@ -15,6 +15,6 @@ print(date1)
 dateteste = date1
 print(b)
 """
-a = 7
-teste = teste.replace(day=teste.day+a)
-print(teste)
+a = timedelta(days=11)
+nova = teste+a
+print(nova)

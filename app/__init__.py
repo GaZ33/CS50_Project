@@ -1,10 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import and_
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 import os
-import datetime
+from datetime import datetime, timedelta
 
 # Carregando as variáveis do ambiente
 load_dotenv()

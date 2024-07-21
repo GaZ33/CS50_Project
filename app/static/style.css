@@ -85,3 +85,9 @@ footer
   justify-content: center;
   gap: 30px;
 }
+
+.botao_tamanho
+{
+  width: 50 px;
+  font-weight: 10px;
+}

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField, DateField
+from wtforms import StringField, PasswordField, SubmitField, EmailField, DateField, SelectField,HiddenField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 
 
@@ -34,4 +34,9 @@ class ProfileForm(FlaskForm):
      Category = StringField(label="Category*",validators=[Length(max=3), DataRequired()])
      Cellphone = StringField(label="Cellphone",validators=[Length(max=16)])
      Birthday =  DateField(label="Birthday",validators=[Length(max=20)])
+     Submit = SubmitField(label="Submit")
+
+class ChoiceInstructor(FlaskForm):
+     Instructor = SelectField(label="Choose a instructor:", validators=[DataRequired()])
+     Instructor_id = HiddenField()
      Submit = SubmitField(label="Submit")

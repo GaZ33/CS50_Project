@@ -2,7 +2,7 @@ show databases;
 CREATE DATABASE IF NOT EXISTS gzauto;
 USE gzauto;
 
-SELECT * FROM Account;
+SELECT * FROM Employees;
 
 
 DELETE FROM Account WHERE Id > 0;

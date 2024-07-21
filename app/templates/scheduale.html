@@ -4,5 +4,27 @@ Scheduale
 {%endblock%}
 
 {%block main%}
+<main class="mr-5 ml-5 pb-4">
+    <form method="post" class="form-register container">
+        {{ form.hidden_tag() }}
+    
+        <div class="row mr-5 ml-5">
+            <div class="col-8">
+                
+                <div class="form-floating mt-4">
+                    {{form.Instructor(class="form-control ",placeholder="*")}}
+                    {{form.Instructor.label()}}
+                    </div>
+            </div>
+            <div class="col-4">
+                <div class="form-floating mt-4">
+                    {{form.Submit(class="btn mt-2 btn-primary w-100 py-2 botao_tamanho" )}}
+                  </div>
+            </div>
+        </div>
+    
+    
+      </form>
+</main>
 
 {%endblock%}

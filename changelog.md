@@ -109,6 +109,11 @@ Building frontend of index.html on figma and starting the flask application
 - Doing the employee login to work
 - Creating the employee scheduale page
 
+## Day 21/07/2024
+- Starting to build the scheduale
+- Setting a selector input on scheduale to choose the instructor
+- Starting to get queries from Classes to let our user choose the time
+
 # WHAT I NEED TO DO?
 scheduale page
 scheduale employee page

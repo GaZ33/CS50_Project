@@ -53,6 +53,7 @@ class Employees(db.Model, UserMixin):
     MName = db.Column(db.String(length=40))
     LName = db.Column(db.String(length=30), nullable=False)
     Email = db.Column(db.String(length=50))
+    Role = db.Column(db.String(length=15))
     Cellphone = db.Column(db.String(length=16))
     Birthday = db.Column(db.DateTime())
     def get_id(self):

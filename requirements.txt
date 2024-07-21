@@ -5,6 +5,7 @@ wtforms
 Bcrypt
 flask_bcrypt
 flask_sqlalchemy
+sqlalchemy
 os
 dotenv
 datetime
