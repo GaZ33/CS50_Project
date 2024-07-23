@@ -17,4 +17,4 @@ print(b)
 """
 a = timedelta(days=11)
 nova = teste+a
-print(nova)
+print(nova.date())

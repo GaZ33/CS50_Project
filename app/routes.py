@@ -1,4 +1,4 @@
-from app import render_template, redirect, url_for, request, session, datetime, timedelta, and_
+from app import render_template, redirect, url_for, request, session, datetime, timedelta, and_, func
 from app import app, login_user, login_required, flash, logout_user, current_user
 from app.models import Account, Information, Employees, db, Classes, Performance
 from app.forms import LoginForm, RegisterForm, ProfileForm, ChoiceInstructor
@@ -149,15 +149,42 @@ def scheduale():
     choice.Instructor.choices = [(instructor.Id, instructor.FName) for instructor in query_instructor]
 
     if request.method == "POST":
+        
         if choice.validate_on_submit:
             today = datetime.today()
             # jé vem o ID ao invés do nome
             employee_choosed = choice.Instructor.data
-            employee_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_choosed, Classes.Date==today)).all()
-            print(employee_scheduale)
-            #Select(Employees_id==employee_choosed, ) .all()
-
+            day1 = timedelta(days=1)
+            #nova_classe = Classes(Date = today, Account_id=current_user.Id, Employees_id=employee_choosed)
+            #db.session.add(nova_classe)
+            #db.session.commit()
+            employee_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_choosed, func.date(Classes.Date)==today.date())).all()
+            week = dict()
+            for day in range(0,7):
+                if today.weekday() == 6:
+                    today = today+day1
+                    continue
+                
+                date = (today.date())
+                week[date] = dict()
+                employee_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_choosed, func.date(Classes.Date)==today.date())).all()
+                for hora in employee_scheduale:
+                    week[date][hora.Date.hour] = True
+                for j in range(5,24):
+                    if j in week[date]:
+                        continue
+                    if j == 12:
+                        continue
+                    week[date][j] = False
+                today = today+day1
+            print(week)
+            return render_template("scheduale.html", form=choice, form_data=week)
             ...
+        else:
+            flash("Problema com o instrutor", category="Danger")
+            render_template("scheduale.html", form=choice)
+            ...
+        
 
     
     return render_template("scheduale.html", form=choice)

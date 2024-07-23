@@ -114,6 +114,9 @@ Building frontend of index.html on figma and starting the flask application
 - Setting a selector input on scheduale to choose the instructor
 - Starting to get queries from Classes to let our user choose the time
 
+## Day 23/07/2024
+- Creating a dict with instructor's scheduale to send to scheduale.html
+
 # WHAT I NEED TO DO?
 scheduale page
 scheduale employee page
