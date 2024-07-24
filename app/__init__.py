@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 # Carregando as variáveis do ambiente
 load_dotenv()

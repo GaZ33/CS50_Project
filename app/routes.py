@@ -1,4 +1,4 @@
-from app import render_template, redirect, url_for, request, session, datetime, timedelta, and_, func
+from app import render_template, redirect, url_for, request, session, datetime, timedelta, and_, func, date
 from app import app, login_user, login_required, flash, logout_user, current_user
 from app.models import Account, Information, Employees, db, Classes, Performance
 from app.forms import LoginForm, RegisterForm, ProfileForm, ChoiceInstructor
@@ -147,10 +147,33 @@ def scheduale():
     choice = ChoiceInstructor()
     query_instructor = Employees.query.filter_by(Role="Instructor")
     choice.Instructor.choices = [(instructor.Id, instructor.FName) for instructor in query_instructor]
-
     if request.method == "POST":
-        
+
         if choice.validate_on_submit:
+            try:
+                dia = str(request.form["dia"])
+                hora = int(request.form["hora"])
+                employee_id = request.form["employee_id"]
+                if dia != "None":
+                    new_day = int(dia[-2:])
+                    new_month = int(dia[-5:-3])
+                    new_year = int(dia[0:4])
+                    # FAZER A LÓGICA DE UPDATE NO DB AQ
+                    new_date = datetime(year=new_year, month=new_month, day=new_day, hour=hora)
+                    # FAZER A LÓGICA DE UPDATE NO DB AQ
+                    new_class = Classes(Date=new_date, Account_id=current_user.Id, Employees_id=employee_id)
+                    db.session.add(new_class)
+                    db.session.commit()
+                    print(new_date)
+                    #new_class = Classes(date)
+                    
+                return redirect(url_for('index'))
+
+            except:
+                print()
+            
+
+
             today = datetime.today()
             # jé vem o ID ao invés do nome
             employee_choosed = choice.Instructor.data
@@ -178,17 +201,18 @@ def scheduale():
                     week[date][j] = False
                 today = today+day1
                 week[date] = sorted(week[date].items()) 
-            print(week)
-            return render_template("scheduale.html", form=choice, week=week)
-            ...
+            #print(week)
+            return render_template("scheduale.html", form=choice, week=week, employee_id=employee_choosed)
+        
         else:
+            week = dict()
             flash("Problema com o instrutor", category="Danger")
-            render_template("scheduale.html", form=choice)
-            ...
+            render_template("scheduale.html", form=choice, week=week, employee_id=None)
+        
         
 
-    
-    return render_template("scheduale.html", form=choice)
+    week = dict()
+    return render_template("scheduale.html", form=choice, week=week, employee_id=None)
 
 @app.route("/logout")
 def logout():

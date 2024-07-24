@@ -22,26 +22,35 @@ Scheduale
                   </div>
             </div>
         </div>
-    
+        <input type="hidden" name="dia" value="None">
+        <input type="hidden" name="hora" value="None">
     
       </form>
 
     
-    <div class="row m-4 ml-4">
+    <div class="row m-4 ml-4 linha_scheduale">
     {% for dia, horas in week.items() %}
-        <div class=" col-2">DAY: {{dia}}
+        <div class=" col-2 col_scheduale">
+            <h5>DAY: {{dia}}</h5>
             <br>
         {%for hora, vdd in horas %}
-        <form action="{{url_for('scheduale')}}">
-
-        {{ hora }}:00 
+        <form action="{{ url_for('scheduale') }}" class="centralizando mt-2 " method="post">
+        
+        
         {%if vdd == True%}
-            AA
+        
+            {{ hora }}:00 
+            <img src="../static/imgs/incorrect.png" width="20" alt="">
+        
+            
             {%else%}
-            <input type="hidden" name="dia" id="{{dia}}">
-            <input type="hidden" name="hora" id="{{hora}}">
-            <br>
-            <button type="submit" class="btn btn-primary btn-sm">Choose</button>
+            
+                {{ hora }}:00 
+                <input type="hidden" name="dia" value="{{ dia }}">
+                <input type="hidden" name="hora" value="{{ hora }}">
+                <input type="hidden" name="employee_id" value="{{ employee_id }}">
+                <button type="submit" class="btn btn-success btn-sm"><img src="../static/imgs/correct.png" width="20" alt=""></button>
+            
         {%endif%}
         
         <br>
@@ -58,5 +67,6 @@ Scheduale
 
    
 </main>
+
 
 {%endblock%}

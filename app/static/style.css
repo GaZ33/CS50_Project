@@ -91,3 +91,12 @@ footer
   width: 50 px;
   font-weight: 10px;
 }
+
+.linha_scheduale
+{
+  background-color: white;
+}
+.col_scheduale
+{
+  background-color: rgb(115, 176, 233);
+}

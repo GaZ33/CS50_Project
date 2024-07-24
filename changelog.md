@@ -118,8 +118,12 @@ Building frontend of index.html on figma and starting the flask application
 - Creating a dict with instructor's scheduale to send to scheduale.html
 - Setting those values to scheduale.html
 
+## Day 24/07/2024
+- Improving the design of scheduale.html
+- Doing the logic of appointment
+- Now you can choose the hour that you want
+
 # WHAT I NEED TO DO?
-scheduale page
 scheduale employee page
 login employees
 Setting flash message
