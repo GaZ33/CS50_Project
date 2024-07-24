@@ -116,6 +116,7 @@ Building frontend of index.html on figma and starting the flask application
 
 ## Day 23/07/2024
 - Creating a dict with instructor's scheduale to send to scheduale.html
+- Setting those values to scheduale.html
 
 # WHAT I NEED TO DO?
 scheduale page

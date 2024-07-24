@@ -25,6 +25,38 @@ Scheduale
     
     
       </form>
+
+    
+    <div class="row m-4 ml-4">
+    {% for dia, horas in week.items() %}
+        <div class=" col-2">DAY: {{dia}}
+            <br>
+        {%for hora, vdd in horas %}
+        <form action="{{url_for('scheduale')}}">
+
+        {{ hora }}:00 
+        {%if vdd == True%}
+            AA
+            {%else%}
+            <input type="hidden" name="dia" id="{{dia}}">
+            <input type="hidden" name="hora" id="{{hora}}">
+            <br>
+            <button type="submit" class="btn btn-primary btn-sm">Choose</button>
+        {%endif%}
+        
+        <br>
+
+        </form>
+        
+        {%endfor%}
+        </div>
+        
+    {% endfor %}
+    </div>
+
+
+
+   
 </main>
 
 {%endblock%}

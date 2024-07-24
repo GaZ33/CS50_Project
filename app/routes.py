@@ -177,8 +177,9 @@ def scheduale():
                         continue
                     week[date][j] = False
                 today = today+day1
+                week[date] = sorted(week[date].items()) 
             print(week)
-            return render_template("scheduale.html", form=choice, form_data=week)
+            return render_template("scheduale.html", form=choice, week=week)
             ...
         else:
             flash("Problema com o instrutor", category="Danger")
