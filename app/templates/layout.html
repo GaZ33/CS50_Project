@@ -62,9 +62,10 @@
                 </a>
               </li>
               {% if not current_user.is_authenticated %}
-              <li class="ms-5">
-                <a href="{{url_for('login')}}" class="nav-link text-white">
+              <li class="ms-5 ">
+                <a href="{{url_for('login')}}" class="nav-link text-white ">
                   <img src="../static/imgs/Profile.png" alt="" width="50">
+                  <h6 style="color: black;">Login</h6>
 
                 </a>
               </li>
@@ -94,12 +95,19 @@
   </header>
   {% with messages = get_flashed_messages(with_categories=true) %}
   <!-- Se houver algum erro -->
-  {%if messages %}
-  <!-- Iterando os erros -->
-  {% for message in messages %}
-  <p>{{ message }}</p>
-  {% endfor %}
-  {% endif %}
+    {%if messages %}
+    <!-- Iterando os erros -->
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            
+
+          
+          {{ message}}
+        </div>
+      {% endfor %}
+    {% endif %}
 
   {% endwith %}
   {%block main%}

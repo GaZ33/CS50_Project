@@ -1,2 +1,4 @@
-# CS50_Project
-Final project of CS50x
+# SCHEDUALE ONLINE
+#### Video Demo:
+#### Description:
+

@@ -42,6 +42,10 @@ def login():
                 # Fazendo o login do usuário
                 session['user_type'] = 'account'
                 login_user(attempted_user)
+                return redirect(url_for("scheduale"))
+            else:
+                flash("Username and password doesn't match", category="danger")
+                
     return render_template("login.html", form = loginform)
 
 # Login_employees.html
@@ -357,7 +361,7 @@ def scheduale():
         else:
             # Criando um dicionário vázio para renderizar a página novamente
             week = dict()
-            flash("Problema com o instrutor", category="Danger")
+            flash("Problema com o instrutor", category="danger")
             render_template("scheduale.html", form=choice, week=week, employee_id=None)
         
         

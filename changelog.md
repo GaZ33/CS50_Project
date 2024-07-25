@@ -130,7 +130,8 @@ Building frontend of index.html on figma and starting the flask application
 - Doing comments to better understand on scheduale
 - Doing the scheduale employee page
 - Now employees can delete and add his appointments
-
+- Setting flash message
+- Setting the scheduale
 
 # WHAT I NEED TO DO?
 Setting flash message

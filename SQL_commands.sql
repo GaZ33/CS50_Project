@@ -2,11 +2,7 @@ show databases;
 CREATE DATABASE IF NOT EXISTS gzauto;
 USE gzauto;
 
-SELECT * FROM Employees;
 
-
-DELETE FROM Account WHERE Id > 0;
-DELETE FROM Information WHERE Account_id > 0;
 
 CREATE TABLE Account(
 	Id INT PRIMARY KEY AUTO_INCREMENT,
@@ -60,9 +56,13 @@ CREATE TABLE Classes(
     FOREIGN KEY (Account_id) REFERENCES Account(Id),
     FOREIGN KEY (Employees_id) REFERENCES Employees(Id)
 );
+
+
+
+
+
 SHOW TABLES;
-DESC account;
+DESC Account;
 DESC information;
-DROP TABLE Account;
-DROP TABLE Information;
-DROP TABLE Performance;
+
+SELECT * FROM Account;

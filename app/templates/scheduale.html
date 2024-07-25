@@ -27,7 +27,9 @@ Scheduale
     
       </form>
 
-    
+    {%if not week%}
+      <div class="preencher_tudo"></div>
+    {%endif%}
     <div class="row m-4 ml-4 linha_scheduale">
     {% for dia, horas in week.items() %}
         <div class=" col-2 col_scheduale">
@@ -72,6 +74,4 @@ Scheduale
 
    
 </main>
-
-
 {%endblock%}
