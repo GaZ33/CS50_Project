@@ -150,22 +150,44 @@ def scheduale():
     if request.method == "POST":
 
         if choice.validate_on_submit:
+
             try:
+                delete = str(request.form["delete"])
                 dia = str(request.form["dia"])
                 hora = int(request.form["hora"])
                 employee_id = request.form["employee_id"]
+                if delete == "True":
+                    new_day = int(dia[-2:])
+                    new_month = int(dia[-5:-3])
+                    new_year = int(dia[0:4])
+                    date_to_delete = datetime(year=new_year, 
+                                              month=new_month, 
+                                              day=new_day, 
+                                              hour=hora)
+
+                    query_to_delete = Classes.query.filter(and_(Classes.Employees_id==employee_id, 
+                                                                Classes.Account_id==current_user.Id, 
+                                                                Classes.Date==date_to_delete)).first()
+                    db.session.delete(query_to_delete)
+                    db.session.commit()
+                    return redirect(url_for('index'))
+
                 if dia != "None":
                     new_day = int(dia[-2:])
                     new_month = int(dia[-5:-3])
                     new_year = int(dia[0:4])
                     # FAZER A LÓGICA DE UPDATE NO DB AQ
-                    new_date = datetime(year=new_year, month=new_month, day=new_day, hour=hora)
+                    new_date = datetime(year=new_year, 
+                                        month=new_month, 
+                                        day=new_day, 
+                                        hour=hora)
                     # FAZER A LÓGICA DE UPDATE NO DB AQ
-                    new_class = Classes(Date=new_date, Account_id=current_user.Id, Employees_id=employee_id)
+                    new_class = Classes(Date=new_date, 
+                                        Account_id=current_user.Id, 
+                                        Employees_id=employee_id)
                     db.session.add(new_class)
                     db.session.commit()
-                    print(new_date)
-                    #new_class = Classes(date)
+
                     
                 return redirect(url_for('index'))
 
@@ -191,14 +213,19 @@ def scheduale():
                 date = (today.date())
                 week[date] = dict()
                 employee_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_choosed, func.date(Classes.Date)==today.date())).all()
+                user_scheduale = Classes.query.filter(and_(Classes.Account_id==current_user.Id, 
+                                                        Classes.Employees_id==employee_choosed,
+                                                        func.date(Classes.Date)==today.date())).all()
                 for hora in employee_scheduale:
-                    week[date][hora.Date.hour] = True
+                    week[date][hora.Date.hour] = [True, None]
+                for hora in user_scheduale:
+                    week[date][hora.Date.hour] = [True, int(current_user.Id)]
                 for j in range(5,24):
                     if j in week[date]:
                         continue
                     if j == 12:
                         continue
-                    week[date][j] = False
+                    week[date][j] = [False, None]
                 today = today+day1
                 week[date] = sorted(week[date].items()) 
             #print(week)
