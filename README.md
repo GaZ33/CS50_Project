@@ -27,6 +27,15 @@ In my main folder of this project, I have those files and folders:
 ### app
 In app file I have those files and folders:
 ![image](https://github.com/user-attachments/assets/1ca7e330-eeef-492c-b4ca-7ab5bcd5a952)
+- static: A folder that saves css files and images. This file need, even the name needs the same, to exist, because the Flask just interprets css files and images through this folder.
+- templates: A folder thayt saves html files. There's the same purpose of the static folder.
+- __init__: It's a file to import every libraries that I used in the project and setting some core objects for application run.
+- forms: It's a file that management every form on my project. I used those forms to get the input of users.
+- models: It's a file that management every object that connect with my database. I can get information from my databse through those models.
+- routes: It's a file that contains every routes
+### DER
+I would like to show my Schema, explain the tables, why and where I used them.
+![image](https://github.com/user-attachments/assets/1cb651d4-9fb3-4f96-8a47-98e66bc406b1)
 
 
 
