@@ -1,0 +1,33 @@
+{% extends 'layout.html'%}
+{% block title %}
+Login
+{% endblock %}
+{% block main %}
+<div class="d-flex align-items-center py-4 background" >
+<main class="form-signin w-100 m-auto" style="background-color: rgb(114, 155, 243); border-radius: 20px;">
+  <form method="post" >
+    <h2>Employees login</h2>
+    {{ form.hidden_tag() }}
+    <h1 class="mt-4 h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      {{form.Username(class="form-control mt-4", id="floatingInput", placeholder="*")}}
+      <!-- <input type="email" class="form-control mt-4" id="floatingInput" placeholder="name@example.com"> -->
+      {{form.Username.label(for="floatingInput")}}
+      <!-- <label for="floatingInput">Email address</label> -->
+    </div>
+    <div class="form-floating mt-4">
+      {{form.Password( class="form-control", id="floatingPassword", placeholder="*")}}
+      <!-- <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> -->
+      {{form.Password.label(for="floatingPassword")}}
+      <!-- <label for="floatingPassword">Password</label> -->
+    </div>
+    {{form.Submit(class="btn mt-2 btn-primary w-100 py-2" )}}
+    <p class="mt-2">If you are a customer, please <a href="{{url_for('login')}}">login here</a></p>
+  </form>
+</main>
+</div>
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

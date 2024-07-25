@@ -126,8 +126,9 @@ Building frontend of index.html on figma and starting the flask application
 ## Day 25/07/2024
 - Doing the button and the logic for the user delete his appointment
 - Now you can delete yours appointment that you've already did
+- Creating employee's login
+- Doing comments to better understand on scheduale
 
 # WHAT I NEED TO DO?
 scheduale employee page
-login employees
 Setting flash message
