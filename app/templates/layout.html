@@ -23,6 +23,7 @@
 
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
               {% if current_user.is_authenticated %}
+                {%if session['user_type'] == 'account'%}
               <li class="ms-5">
                 <a href="{{url_for('scheduale')}}" class="nav-link text-white justify-content-center">
                   <img src="../static/imgs/Calender.png" alt="" width="50">
@@ -30,6 +31,15 @@
                   <p style="color: black;">Horários</p>
                 </a>
               </li>
+                {%else%}
+                <li class="ms-5">
+                  <a href="{{url_for('schedualeemployee')}}" class="nav-link text-white justify-content-center">
+                    <img src="../static/imgs/Calender.png" alt="" width="50">
+                    <br>
+                    <p style="color: black;">Horários</p>
+                  </a>
+                </li>
+                {%endif%}
               {% endif %}
               <li class="align-items-center ">
                 <a href="#" class="nav-link text-secondary">

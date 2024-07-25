@@ -35,7 +35,6 @@ Scheduale
             <br>
         {%for hora, items in horas %}
         <form action="{{ url_for('scheduale') }}" class="centralizando mt-2 " method="post">
-        
         {{ hora }}:00 
         {%if items[0] == True%}
         

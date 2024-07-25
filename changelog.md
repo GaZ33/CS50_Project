@@ -128,7 +128,9 @@ Building frontend of index.html on figma and starting the flask application
 - Now you can delete yours appointment that you've already did
 - Creating employee's login
 - Doing comments to better understand on scheduale
+- Doing the scheduale employee page
+- Now employees can delete and add his appointments
+
 
 # WHAT I NEED TO DO?
-scheduale employee page
 Setting flash message

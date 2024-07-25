@@ -4,6 +4,55 @@ Scheduale Employees
 {%endblock%}
 
 {%block main%}
+<main class="mr-5 ml-5 pb-4">
+   
+    <div class="row m-4 ml-4 linha_scheduale">
+    {% for dia, horas in week.items() %}
+        <div class=" col-2 col_scheduale">
+            <h5>DAY: {{dia}}</h5>
+            <br>
+        {%for hora, items in horas %}
+        <form action="{{ url_for('schedualeemployee') }}" class="centralizando mt-2 " method="post">
+        
+        
+        {{ hora }}:00 
+        {%if items[1] == 1%}
+            
+        <input type="hidden" name="dia" value="{{ dia }}">
+        <input type="hidden" name="hora" value="{{ hora }}">
+        <input type="hidden" name="delete" value="True">
+        <button type="submit" class="">
+            <img src="../static/imgs/delete.png" width="20" alt="">
+        </button>
+        {%elif items[1] == 2 %}
+            <input type="hidden" name="dia" value="{{ dia }}">
+            <input type="hidden" name="hora" value="{{ hora }}">
+            <input type="hidden" name="delete" value="True">
+            <button type="submit" class="">
+                <img src="../static/imgs/clock.png" width="20" alt="">
+            </button>
+        {%else%}
+            <input type="hidden" name="dia" value="{{ dia }}">
+            <input type="hidden" name="hora" value="{{ hora }}">
+            <input type="hidden" name="delete" value="False">
+            <button type="submit" class="btn btn-success btn-sm">
+                <img src="../static/imgs/correct.png" width="20" alt="">
+            </button>
+        {%endif%}
+        
+        <br>
 
+        </form>
+        
+        {%endfor%}
+        </div>
+        
+    {% endfor %}
+    </div>
+
+
+
+   
+</main>
 
 {%endblock%}
