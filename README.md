@@ -36,5 +36,6 @@ In app file I have those files and folders:
 ### DER
 I would like to show my Schema, explain the tables, why and where I used them.
 
+![image](https://github.com/user-attachments/assets/fea3cdf3-58e8-41fe-9863-8588e93178ce)
 
 
