@@ -35,7 +35,6 @@ In app file I have those files and folders:
 - routes: It's a file that contains every routes
 ### DER
 I would like to show my Schema, explain the tables, why and where I used them.
-![image](https://github.com/user-attachments/assets/1cb651d4-9fb3-4f96-8a47-98e66bc406b1)
 
 
 
