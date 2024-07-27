@@ -33,9 +33,34 @@ In app file I have those files and folders:
 - forms: It's a file that management every form on my project. I used those forms to get the input of users.
 - models: It's a file that management every object that connect with my database. I can get information from my databse through those models.
 - routes: It's a file that contains every routes
-### DER
+### DER - ERD
 I would like to show my Schema, explain the tables, why and where I used them.
 
 ![image](https://github.com/user-attachments/assets/fea3cdf3-58e8-41fe-9863-8588e93178ce)
+
+Each table which is inside of yellow box, it's a table created thinking in analysis, contact and control metrics for the company.  And each table wich is inside of red box, it's a table created for some module or a funciton to work.
+#### Account table
+This table is used for management of user's login. It's needed a Username, that is unique, and a password, this password is provided by the user and is stored encrypted.
+#### Classes table
+This table is used for management of scheduale, it has a relationship to link the user to the instructor. So, it can then displayed on the scheduale page, so that users can see what time they can scheduale on the instructor's scheduale.
+This table can also be used to manage an instructor's scheduale. Each class will be stored in this table, so, you can see how many classes that instructor has taken in given period.
+#### Employees table
+It's a table to store the information from the instructor. This exist for the same reason of Account and information table.
+The instructor log in through this table, so, there is a Username column, which is unique, and a password column, which is encrypted.
+#### Information table
+It's a table to store the information from the user, through this table the company can perform some analysis and maintain contact with users.
+#### Performance table
+This table stores the user's progress , and can be used to monitor some metrics and improve user's skills before the driving test.
+### HTML files
+Each HTML file there is a main pupose. Each functionality of application is inside a file. The application have those HTML files:
+- layout: In this file there are header, footer, links and head tags which I use on html files below. This file is the main template.
+- index: It's the home page file, it will be the first page when new users enters
+- register: This file is used to register new users, there is a form with many required inputs
+- login: In this file, users can log in to their accounts
+- Profile: It's a file for users can change some information about them
+- Scheduale: Through this file, users can scheduale times for their classes
+- loginemployee: In this file, Employees can log in to their accounts
+- Schedualeemployee: In this file, Employees can see their classes and manage them
+
 
 

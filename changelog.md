@@ -133,5 +133,5 @@ Building frontend of index.html on figma and starting the flask application
 - Setting flash message
 - Setting the scheduale
 
-# WHAT I NEED TO DO?
-Setting flash message
+## Day 27/07/2024
+- Updating the scheduale to avoid errors

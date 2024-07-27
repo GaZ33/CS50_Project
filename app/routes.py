@@ -169,7 +169,7 @@ def register():
                 for err_msg in registerform.errors.values():
                      flash(f"Houve um erro ao criar a conta: {err_msg[0]}")
             if query_check_user:
-                flash(message="Já existe um usuário com esse Username", category="danger")
+                flash(message="Sorry, this username already exists", category="danger")
             
             else:
                 # Adicionando a instância no database
@@ -255,6 +255,17 @@ def scheduale():
                 hora = int(request.form["hora"])
                 employee_id = request.form["employee_id"]
 
+                date_to_check = datetime(year=new_year, 
+                                              month=new_month, 
+                                              day=new_day, 
+                                              hour=hora)
+                check_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_id, 
+                                                                Classes.Date==date_to_check)).first()
+                # Verificando se alguém ja n marcou esse horário
+                if check_scheduale:
+                    flash("Sorry, this class already taken", category="danger")
+                    return redirect(url_for('scheduale'))
+                
                 # If que executará a deleção do appointment
                 if delete == "True":
                     # Separando o dia, mes e ano do formato que vêm
@@ -361,7 +372,7 @@ def scheduale():
         else:
             # Criando um dicionário vázio para renderizar a página novamente
             week = dict()
-            flash("Problema com o instrutor", category="danger")
+            flash("Problem with instrutor", category="danger")
             render_template("scheduale.html", form=choice, week=week, employee_id=None)
         
         
