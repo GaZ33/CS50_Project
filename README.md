@@ -1,4 +1,4 @@
-# SCHEDUALE ONLINE
+# ONLINE SCHEDUALE 
 #### Video Demo:
 #### Description:
 ## The purpose of the project
