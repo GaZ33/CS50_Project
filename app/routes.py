@@ -254,15 +254,18 @@ def scheduale():
                 dia = str(request.form["dia"])
                 hora = int(request.form["hora"])
                 employee_id = request.form["employee_id"]
-
+                new_day = int(dia[-2:])
+                new_month = int(dia[-5:-3])
+                new_year = int(dia[0:4])
                 date_to_check = datetime(year=new_year, 
                                               month=new_month, 
                                               day=new_day, 
                                               hour=hora)
                 check_scheduale = Classes.query.filter(and_(Classes.Employees_id==employee_id, 
                                                                 Classes.Date==date_to_check)).first()
+                
                 # Verificando se alguém ja n marcou esse horário
-                if check_scheduale:
+                if check_scheduale and check_scheduale.Account_id != current_user.Id:
                     flash("Sorry, this class already taken", category="danger")
                     return redirect(url_for('scheduale'))
                 
@@ -285,7 +288,7 @@ def scheduale():
                     # Deletando a instância
                     db.session.delete(query_to_delete)
                     db.session.commit()
-                    return redirect(url_for('index'))
+                    return redirect(url_for('scheduale'))
 
                 """
                 No primeiro submit, não haverá o dia, então o dia vem como None
@@ -307,7 +310,7 @@ def scheduale():
                     # Adicionando a informação no DB
                     db.session.add(new_class)
                     db.session.commit()
-                    return redirect(url_for('index'))
+                    return redirect(url_for('scheduale'))
 
             except:
                 # Única maneira que achei para evitar erros
