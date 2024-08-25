@@ -135,3 +135,13 @@ Building frontend of index.html on figma and starting the flask application
 
 ## Day 27/07/2024
 - Updating the scheduale to avoid errors
+
+## Day 24/08/2024
+- Starting to create the function in scheduale.html to see the classes in the next week.
+- Creating a new route for the fetch function on scheduale.html
+
+# TODO
+- Atualizar a função scheduale para levar algumas informações importantes para realizar a função fetch
+- colocar umn input hidden com o instrutor pesquisado
+- colocar um input hidden com a data de inicio.
+- Verificar se da para colocar uma restrição na route search, se vai dar problema ou n.

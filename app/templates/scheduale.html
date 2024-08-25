@@ -22,6 +22,7 @@ Scheduale
                   </div>
             </div>
         </div>
+        <!-- Fazer um input para o value do dia de inicio. -->
         <input type="hidden" name="dia" value="None">
         <input type="hidden" name="hora" value="None">
     
@@ -30,7 +31,7 @@ Scheduale
     {%if not week%}
       <div class="preencher_tudo"></div>
     {%endif%}
-    <div class="row m-4 ml-4 linha_scheduale">
+    <div class="row m-4 ml-4 linha_scheduale" id="schedualer">
     {% for dia, horas in week.items() %}
         <div class=" col-2 col_scheduale">
             <h5>DAY: {{dia}}</h5>
@@ -69,6 +70,31 @@ Scheduale
         
     {% endfor %}
     </div>
+
+    <script>
+        let activebuttonnext = document.getElementById("proximo");
+        let activebuttonback = document.getElementById("voltar");
+        // criar um input da data de inicio no forms:
+        // let startdata = document.getElementById("inicio");
+        let startdata;
+        let instrutor
+        let scheduale = document.getElementById("schedualer");
+        activebuttonnext.addEventListener("click", async function(){
+            let response = await fetch('/search?q=' + startdata + "&" + "data" + instrutor);
+
+            let shows = await response.text();
+            scheduale.innerHTML = shows;
+        });
+        activebuttonback.addEventListener("click", async function(){
+            let response = await fetch('/search?q=' + startdata);
+
+            let shows = await response.text();
+            scheduale.innerHTML = shows;
+        });
+        
+
+    </script>
+    
 
 
 

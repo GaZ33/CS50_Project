@@ -68,6 +68,29 @@ def login_employees():
                 
     return render_template("loginemployee.html", form = loginform)
 
+@app.route("/search", methods= ["GET"])
+def dataquery():
+    # pegar a data inicial da última query
+    q = request.args.get("q") 
+
+    # pegar o isntrutor
+    instrutor = request.args.get("data")
+
+    # Requisitando a data de hoje comparar posteriormente
+    today = datetime.today()
+
+    # dps tem que testar se o argumento months funciona
+    day1 = timedelta(months=2)
+
+    # fazer uma verificação de se a query exceder mais de 2 mese4s, voltar um template dizendo algo "muito longe"
+    if q:
+        # fazer a query dessa data para 1 semana dps
+        ...
+    
+    # criar um search para exibir o calendário daquela data escolhida.
+    return render_template("search.html")
+
+
 @app.route("/schedualeemployee", methods=["GET", "POST"])
 def schedualeemployee():
     # Requisitando a data de hoje para exibir
