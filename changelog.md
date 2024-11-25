@@ -140,7 +140,13 @@ Building frontend of index.html on figma and starting the flask application
 - Starting to create the function in scheduale.html to see the classes in the next week.
 - Creating a new route for the fetch function on scheduale.html
 
+## Day 24/11/2024
+- Creating the next and previous icon
+- Adding jquery to my application
+
 # TODO
+- Usar o jquery para remover o botão de previous se a data de hoje for igual a que veio no primeiro dia
+- Usar jquery com fetch
 - Atualizar a função scheduale para levar algumas informações importantes para realizar a função fetch
 - colocar umn input hidden com o instrutor pesquisado
 - colocar um input hidden com a data de inicio.

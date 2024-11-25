@@ -105,3 +105,9 @@ footer
 {
   height: 15rem;
 }
+.red{
+  color: blue;
+}
+.flipped {
+  transform: scaleX(-1);
+}

@@ -5,6 +5,7 @@ Scheduale
 
 {%block main%}
 <main class="mr-5 ml-5 pb-4">
+    <text class="a">a</text>
     <form method="post" class="form-register container">
         {{ form.hidden_tag() }}
     
@@ -31,13 +32,37 @@ Scheduale
     {%if not week%}
       <div class="preencher_tudo"></div>
     {%endif%}
-    <div class="row m-4 ml-4 linha_scheduale" id="schedualer">
+    {%if week%}
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col-2 previous ">
+                Previous week
+                <br>
+                <div class="flipped">
+                    <i class="bi fs-1 bi-forward-fill" ></i>
+                </div>
+                
+                     
+              </div>
+          <div class="col-8">
+           
+          </div>
+          <div class="col-2 next">
+            Next week
+            <br>
+            <i class="bi fs-1 bi-forward-fill"></i>
+                 
+          </div>
+        </div>
+      </div>
+    {%endif%}
+    <div class="row me-4 ms-4 linha_scheduale" id="schedualer">
     {% for dia, horas in week.items() %}
-        <div class=" col-2 col_scheduale">
+        <div class=" col-2 col_scheduale mb-n1">
             <h5>DAY: {{dia}}</h5>
             <br>
         {%for hora, items in horas %}
-        <form action="{{ url_for('scheduale') }}" class="centralizando mt-2 " method="post">
+        <form action="{{ url_for('scheduale') }}" class="centralizando mt-1 mb-1" method="post">
         {{ hora }}:00 
         {%if items[0] == True%}
         
@@ -70,29 +95,34 @@ Scheduale
         
     {% endfor %}
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        let activebuttonnext = document.getElementById("proximo");
-        let activebuttonback = document.getElementById("voltar");
-        // criar um input da data de inicio no forms:
-        // let startdata = document.getElementById("inicio");
-        let startdata;
-        let instrutor
-        let scheduale = document.getElementById("schedualer");
-        activebuttonnext.addEventListener("click", async function(){
-            let response = await fetch('/search?q=' + startdata + "&" + "data" + instrutor);
+        // let activebuttonnext = document.getElementById("next");
+        // let activebuttonback = document.getElementById("previous");
+        // // criar um input da data de inicio no forms:
+        // // let startdata = document.getElementById("inicio");
+        // let startdata;
+        // let instrutor
+        // let scheduale = document.getElementById("schedualer");
+        // activebuttonnext.addEventListener("click", async function(){
+        //     let response = await fetch('/search?q=' + startdata + "&" + "data" + instrutor);
 
-            let shows = await response.text();
-            scheduale.innerHTML = shows;
+        //     let shows = await response.text();
+        //     scheduale.innerHTML = shows;
+        // });
+        // activebuttonback.addEventListener("click", async function(){
+        //     let response = await fetch('/search?q=' + startdata);
+
+        //     let shows = await response.text();
+        //     scheduale.innerHTML = shows;
+        // });
+        $(document).ready(function(){
+        $(".a").click(function(){
+            const date = new Date();
+            alert(date);
         });
-        activebuttonback.addEventListener("click", async function(){
-            let response = await fetch('/search?q=' + startdata);
-
-            let shows = await response.text();
-            scheduale.innerHTML = shows;
         });
         
-
     </script>
     
 
